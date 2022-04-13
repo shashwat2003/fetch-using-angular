@@ -1,0 +1,28 @@
+<div class="flex">
+    <mat-card>
+        <mat-card-title>Login</mat-card-title>
+        <mat-card-subtitle>Login to access your data</mat-card-subtitle>
+        <mat-card-content>
+            <div *ngIf="error!='Fetching Data..' && error!='Data Loaded'">
+                There was an error fetching the data! <br>{{error}}
+            </div>
+            <div *ngIf="error==='Fetching Data..'">
+                {{error}}
+            </div>
+            <form *ngIf="error==='Data Loaded'" id="loginForm">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input id="email" matInput placeholder="Enter your registered email.."
+                        pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,}$" required="">
+                </mat-form-field>
+                <br>
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input id="passw" type="password" matInput placeholder="Type your password.." required>
+                </mat-form-field>
+                <button type="submit" color="accent" form="loginForm"
+                    (click)="$event.preventDefault(); authenticateUser()" mat-raised-button>Login</button>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>
